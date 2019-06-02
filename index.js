@@ -6,7 +6,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 
 const api = new ParseServer({
-	databaseURI: 'mongodb://127.0.0.1:27017/gps-crime-reporting',
+	databaseURI: 'mongodb://caszw2019:caszw2019@ds016118.mlab.com:16118/caszw',
 	cloud: __dirname + '/cloud/main.js',
 	serverURL: 'https://caszw.herokuapp.com/parse',
 	appId: 'gps-crime-reporting',
