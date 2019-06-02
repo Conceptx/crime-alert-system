@@ -56,6 +56,8 @@ app.get('/', (req, res) => {
 });
 
 const httpServer = require('http').createServer(app);
-httpServer.listen(3000, function() {
-	console.log('GPS Crime Reporting System Dashboard Running On Port ' + 3000 + '.');
+httpServer.listen(process.env.PORT || 3000, function() {
+	console.log(
+		'GPS Crime Reporting System Dashboard Running On Port ' + process.env.PORT || 3000 + '.'
+	);
 });
