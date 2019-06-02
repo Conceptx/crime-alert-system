@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 
 router.get('/:latitude/:longitude', async (req, res) => {
 	const { latitude, longitude } = req.params;
-	const url = `http://127.0.0.1:3000/parse/Users?limit=1&where={"location": {"$nearSphere": {"__type": "GeoPoint","latitude": ${parseFloat(
+	const url = `https://caszw.herokuapp.com/parse/Users?limit=1&where={"location": {"$nearSphere": {"__type": "GeoPoint","latitude": ${parseFloat(
 		latitude
 	)},"longitude":${parseFloat(longitude)}}}}`;
 	fetch(url, {
