@@ -51,6 +51,10 @@ app.get('/cases', (req, res) => {
 	res.sendFile(path.join(__dirname, '/public/tables.html'));
 });
 
+app.get('/', (req, res) => {
+	res.json({ status: 'alive' });
+});
+
 const httpServer = require('http').createServer(app);
 httpServer.listen(3000, function() {
 	console.log('GPS Crime Reporting System Dashboard Running On Port ' + 3000 + '.');
