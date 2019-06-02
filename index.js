@@ -8,7 +8,7 @@ const morgan = require('morgan');
 const api = new ParseServer({
 	databaseURI: 'mongodb://127.0.0.1:27017/gps-crime-reporting',
 	cloud: __dirname + '/cloud/main.js',
-	serverURL: 'http://localhost:3000/parse',
+	serverURL: 'https://caszw.herokuapp.com/parse',
 	appId: 'gps-crime-reporting',
 	masterKey: 'gps-crime-reporting'
 });
