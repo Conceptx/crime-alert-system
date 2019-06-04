@@ -13,26 +13,16 @@ router.get('/', async (req, res) => {
 		'arson',
 		'burglary'
 	];
-	const results = [];
+	const results = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 	const query = Parse.Object.extend('Cases');
 
 	types.map(async (value, i) => {
 		query.equalTo('type', value);
 		const count = await query.count();
-		results.push(count);
+		results[i] = count;
 	});
 
 	res.json({ success: true, results });
-});
-
-router.get('/:type', async (req, res) => {
-	const { type } = req.params;
-	const query = Parse.Object.extend('Cases');
-
-	query.equalTo('type', type);
-	const count = await query.count();
-
-	res.json({ success: true, count });
 });
 
 module.exports = router;

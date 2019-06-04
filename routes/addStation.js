@@ -5,8 +5,8 @@ router.post('/', (req, res) => {
 	const newUser = new Parse.User();
 	const { station, contact, latitude, longitude, password } = req.body;
 	const location = new Parse.GeoPoint({
-		latitude,
-		longitude
+		latitude: parseFloat(latitude),
+		longitude: parseFloat(longitude)
 	});
 
 	newUser
