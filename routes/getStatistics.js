@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    const types = [""];
+router.get('/', async (req, res) => {
+    const types = ["theft", "dui", "assault", "battery", "rape", "hit and run", "robbery", "arson", "burglary"];
     const results = [];
     const query = Parse.Object.extend('Cases');
 
