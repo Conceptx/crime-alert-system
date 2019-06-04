@@ -37,13 +37,13 @@
     -->
 				<div class="sidebar-wrapper" id="sidebar-wrapper">
 					<ul class="nav">
-						<li>
+						<li class="active ">
 							<a href="/dashboard">
 								<i class="now-ui-icons design_app"></i>
 								<p>Dashboard</p>
 							</a>
 						</li>
-						<li class="active">
+						<li>
 							<a href="/map">
 								<i class="now-ui-icons location_map-big"></i>
 								<p>Heat Maps</p>
@@ -55,7 +55,7 @@
 								<p>Reported Cases</p>
 							</a>
 						</li>
-						<li class="">
+						<li class="active">
 							<a href="/new/case">
 								<i class="now-ui-icons files_paper"></i>
 								<p>Add Case</p>
@@ -88,7 +88,7 @@
 									<span class="navbar-toggler-bar bar3"></span>
 								</button>
 							</div>
-							<a class="navbar-brand" href="#pablo">Heat Maps</a>
+							<a class="navbar-brand" href="#pablo">New Police Station</a>
 						</div>
 						<button
 							class="navbar-toggler"
@@ -108,27 +108,61 @@
 				<!-- End Navbar -->
 				<div class="panel-header panel-header-sm"></div>
 				<div class="content">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="card ">
-								<div class="card-header ">
-									Heat Maps Based On Reported Cases
-									<br /><br />
-									<div class="">
-										<i class="fa fa-circle text-success"></i><small> Theft</small>
-										<i class="fa fa-circle text-primary"></i><small> DUI</small>
-										<i class="fa fa-circle text-info"></i><small> Assault</small>
-										<i class="fa fa-circle text-danger"></i><small> Battery</small>
-										<i class="fa fa-circle "></i><small> Rape</small>
-										<i class="fa fa-circle text-danger"></i><small> Hit and Run</small>
-										<i class="fa fa-circle text-danger"></i><small> Robbery</small>
-										<i class="fa fa-circle text-info"></i><small> Arson</small>
-										<i class="fa fa-circle text-danger"></i><small> Burglary</small>
+					<div class="container">
+						<div class="col-md-4 ml-auto mr-auto">
+							<div class="card card-login card-plain">
+								<form class="form" method="POST" action="/addUser">
+									<div class="card-header text-center">
+										<span class="h5">Add A New Police Station</span>
 									</div>
-								</div>
-								<div class="card-body ">
-									<div id="map" class="map"></div>
-								</div>
+									<div class="card-body">
+										<div class="input-group no-border input-lg">
+											<input
+												type="text"
+												name="station"
+												class="form-control"
+												placeholder="Station..."
+											/>
+										</div>
+										<div class="input-group no-border input-lg">
+											<input
+												type="text"
+												name="contact"
+												placeholder="Contact"
+												class="form-control"
+											/>
+										</div>
+										<div class="input-group no-border input-lg">
+											<input
+												type="text"
+												name="latitude"
+												placeholder="Latitude"
+												class="form-control"
+											/>
+										</div>
+										<div class="input-group no-border input-lg">
+											<input
+												type="text"
+												name="longitude"
+												placeholder="Longitude"
+												class="form-control"
+											/>
+										</div>
+										<div class="input-group no-border input-lg">
+											<input
+												type="password"
+												name="password"
+												placeholder="Password"
+												class="form-control"
+											/>
+										</div>
+									</div>
+									<div class="card-footer text-center">
+										<button type="submit" class="btn btn-primary btn-lg btn-block">
+											Add Station
+										</button>
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>
@@ -151,45 +185,5 @@
 		></script>
 		<!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
 		<script src="public/assets-dashboard/demo/demo.js"></script>
-		<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
-		<script>
-			var map = L.map('map');
-			var target = L.latLng(-17.83, 31.0012);
-			map.setView(target, 13);
-
-			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-				attribution:
-					'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-			}).addTo(map);
-		</script>
-		<script>
-			fetch('https://caszw.herokuapp.com/getCases', {
-				method: 'GET'
-			})
-				.then(res => res.json())
-				.then(res => {
-					console.log(res);
-					res.cases.map((value, i) => {
-						let color;
-						console.log(value);
-						switch (value.type) {
-							case 'rape':
-								color = 'black';
-								break;
-							default:
-								color = 'red';
-						}
-						L.circle([value.location.latitude, value.location.longitude], {
-							radius: 200,
-							fillColor: color,
-							color: color
-						})
-							.addTo(map)
-							.bindTooltip(value.type)
-							.openTooltip();
-					});
-				})
-				.catch(error => console.log(error));
-		</script>
 	</body>
 </html>

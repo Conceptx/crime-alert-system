@@ -33,6 +33,7 @@ app.use('/addStation', require('./routes/addStation'));
 app.use('/getContact', require('./routes/getContact'));
 app.use('/addCase', require('./routes/addCase'));
 app.use('/getCases', require('./routes/getCases'));
+app.use('/getStatistics', require('./routes/getStatistics'));
 
 // Local Routes
 app.get('/login', (req, res) => {
@@ -49,6 +50,18 @@ app.get('/map', (req, res) => {
 
 app.get('/cases', (req, res) => {
 	res.sendFile(path.join(__dirname, '/public/tables.html'));
+});
+
+app.get('/new/user', (req, res) => {
+	res.sendFile(path.join(__dirname, '/public/new-user.html'));
+});
+
+app.get('/new/case', (req, res) => {
+	res.sendFile(path.join(__dirname, '/public/new-case.html'));
+});
+
+app.get('/logout', (req, res) => {
+	res.redirect('/login');
 });
 
 app.get('/', (req, res) => {

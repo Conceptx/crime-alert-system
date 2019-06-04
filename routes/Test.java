@@ -19,7 +19,7 @@ public class Test {
 
         try {
             String querystring = "" + -17.00 + "/" + "" + 30.00;
-            URL url = new URL("http://127.0.0.1:3000/getContact/" + querystring);
+            URL url = new URL("https://caszw.herokuapp.com/getContact/" + querystring);
             connection = (HttpURLConnection) url.openConnection();
 
             // Request setup

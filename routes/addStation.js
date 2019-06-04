@@ -11,7 +11,7 @@ router.post('/', (req, res) => {
 
 	newUser
 		.signUp({ username: station, contact, location, password })
-		.then(data => res.json({ success: true, id: data.id }))
+		.then(data => res.redirect('/dashboard'))
 		.catch(error => console.log(error));
 });
 
