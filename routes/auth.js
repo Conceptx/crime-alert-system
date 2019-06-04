@@ -7,7 +7,7 @@ router.post('/', (req, res) => {
 	Parse.User.enableUnsafeCurrentUser();
 	Parse.User.logIn(username, password).then(user => {
 		Parse.User.become(req.body.sessionToken)
-			.then(response => res.json({ success: true }))
+			.then(response => res.redirect('/dashboard'))
 			.catch(error => console.log(error));
 	});
 });

@@ -52,11 +52,11 @@ app.get('/cases', (req, res) => {
 	res.sendFile(path.join(__dirname, '/public/tables.html'));
 });
 
-app.get('/new/user', (req, res) => {
+app.get('/newUser', (req, res) => {
 	res.sendFile(path.join(__dirname, '/public/new-user.html'));
 });
 
-app.get('/new/case', (req, res) => {
+app.get('/newCase', (req, res) => {
 	res.sendFile(path.join(__dirname, '/public/new-case.html'));
 });
 
