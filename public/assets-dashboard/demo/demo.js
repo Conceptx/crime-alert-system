@@ -84,7 +84,17 @@ demo = {
       type: 'line',
       responsive: true,
       data: {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        labels: [
+          'theft',
+          'dui',
+          'assault',
+          'battery',
+          'rape',
+          'hit and run',
+          'robbery',
+          'arson',
+          'burglary'
+        ],
         datasets: [{
           label: "Active Users",
           borderColor: "#f96332",
@@ -218,11 +228,30 @@ demo = {
     var gradientFill = ctx.createLinearGradient(0, 200, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
     gradientFill.addColorStop(1, "rgba(255, 255, 255, 0.24)");
+    
+    let stats = []
+
+    fetch('/getStatistics', {
+      method: 'GET',
+    })
+    .then(res => res.json())
+    .then(res => {return stats = res.results})
+    .catch(error => console.log(error))
 
     var myChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
+        labels: [
+          'theft',
+          'dui',
+          'assault',
+          'battery',
+          'rape',
+          'hit and run',
+          'robbery',
+          'arson',
+          'burglary'
+        ],
         datasets: [{
           label: "Data",
           borderColor: chartColor,
@@ -237,7 +266,7 @@ demo = {
           fill: true,
           backgroundColor: gradientFill,
           borderWidth: 2,
-          data: [50, 150, 100, 190, 130, 90, 150, 160, 120, 140, 190, 95]
+          data: stats
         }]
       },
       options: {
