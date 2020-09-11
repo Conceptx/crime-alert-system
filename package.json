@@ -17,7 +17,7 @@
 		"express": "^4.17.1",
 		"firebase": "^6.1.0",
 		"morgan": "^1.9.1",
-		"node-fetch": "^2.6.0",
+		"node-fetch": "^2.6.1",
 		"parse-server": "^3.4.0"
 	}
 }
